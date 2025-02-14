@@ -1,10 +1,11 @@
 import tweepy
+import os
 
-# Twitter API credentials (replace these with your keys)
-consumer_key = "your_consumer_key"
-consumer_secret = "your_consumer_secret"
-access_token = "your_access_token"
-access_token_secret = "your_access_token_secret"
+# Get API keys from GitHub Secrets
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
+access_token = os.getenv("ACCESS_TOKEN")
+access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 
 # Authenticate with Twitter
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
