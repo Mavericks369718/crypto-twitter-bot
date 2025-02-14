@@ -20,12 +20,11 @@ jobs:
       - name: Install dependencies
         run: pip install tweepy
 
-      - name: Debug Secrets
-        run: |
-          echo "CONSUMER_KEY=${{ secrets.CONSUMER_KEY }}" | sed 's/./& /g'
-          echo "CONSUMER_SECRET=${{ secrets.CONSUMER_SECRET }}" | sed 's/./& /g'
-          echo "ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}" | sed 's/./& /g'
-          echo "ACCESS_TOKEN_SECRET=${{ secrets.ACCESS_TOKEN_SECRET }}" | sed 's/./& /g'
-
       - name: Run the bot
+        env:
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
         run: python bot.py
+
